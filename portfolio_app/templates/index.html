@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container shadow">
+    <br>
+    <h1>Benie's <br><span><h4>Top API Endpoints</h4></span></h1>
+    <br>
+    <ol class="bg-light w-50">
+        <li><a href="{% url 'all-projects' %}">All Projects</a></li>
+        <span>
+            <ul>
+                {% for p in projects %}<li><a href="{% url 'project-details' p.id %}">Project: <span><strong>{{p.name}}</strong></span> details</a></li>{% endfor %}
+            </ul>
+        </span>
+        <li><a href="{% url 'all-technologies' %}">All Technologies</a></li>
+        <span>
+            <ul>
+                {% for t in technologies %}<li><a href="{% url 'technology-details' t.id %}">Technology: {{t.id}}. <span><strong>{{t.name}}</strong> </span> details</a></li>{% endfor %}
+            </ul>
+        </span>
+        <li><a href="{% url 'all-feedbacks' %}">All Feedbacks</a></li>
+        <span>
+            <ul>
+                {% for f in feedbacks %}<li><a href="{% url 'feedback-details' f.id %}">Feedback #{{f.id}} details</a></li>{% endfor %}
+            </ul>
+        </span>
+    </ol>
+</div>
+{% endblock %}
