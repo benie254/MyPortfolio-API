@@ -192,3 +192,18 @@ class MyUser(AbstractBaseUser,PermissionsMixin):
 class Password(models.Model):
     username = models.CharField(max_length=120,null=True,blank=True)
     email = models.EmailField(max_length=120,null=True,blank=True)
+
+class Project(models.Model):
+    name = models.CharField(max_length=500,default='')
+    summary = models.TextField(max_length=1000,default='')
+    short_description = models.CharField(max_length=2000,default='')
+    long_description = models.TextField(max_length=10000,default='')
+    featured_img = models.URLField(max_length=5000,default='')
+    screenshot = models.URLField(max_length=5000,default='')
+    live_link = models.URLField(max_length=1000,default='')
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
