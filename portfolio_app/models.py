@@ -196,6 +196,9 @@ class Password(models.Model):
 class Technology(models.Model):
     name = models.CharField(max_length=500,default='')
 
+class Feature(models.Model):
+    name = models.CharField(max_length=120,default='')
+
 class Project(models.Model):
     name = models.CharField(max_length=500,default='')
     summary = models.TextField(max_length=1000,default='')
