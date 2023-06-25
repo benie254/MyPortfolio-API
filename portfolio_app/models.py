@@ -215,3 +215,12 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Like(models.Model):
+    LIKES = (('like','like'),('dislike','dislike'))
+    like = models.CharField(choices=LIKES,max_length=60,null=True,blank=True)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE,null=True,blank=True)
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.like
