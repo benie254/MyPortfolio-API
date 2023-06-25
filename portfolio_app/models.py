@@ -234,3 +234,12 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
     
+class Contact(models.Model):
+    name = models.CharField(max_length=300,null=True,blank=True)
+    email = models.EmailField(max_length=500,null=True,blank=True)
+    message = models.TextField(max_length=10000,null=True,blank=True)
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
+    
