@@ -207,6 +207,8 @@ class Project(models.Model):
     featured_img = models.URLField(max_length=5000,default='')
     screenshot = models.URLField(max_length=5000,default='')
     live_link = models.URLField(max_length=1000,default='')
+    technologies = models.ManyToManyField(Technology)
+    features = models.ManyToManyField(Feature)
 
     class Meta:
         ordering = ['name']
