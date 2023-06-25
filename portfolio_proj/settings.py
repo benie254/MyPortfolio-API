@@ -90,7 +90,7 @@ REST_KNOX = {
     'AUTO_REFRESH': False,
 }
 
-AUTH_USER_MODEL = 'deliver_app.MyUser'
+AUTH_USER_MODEL = 'portfolio_app.MyUser'
 
 CORS_ORIGIN_ALLOW_ALL = False 
 CORS_ORIGIN_WHITELIST = (
