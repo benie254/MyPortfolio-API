@@ -224,3 +224,13 @@ class Like(models.Model):
 
     def __str__(self):
         return self.like
+    
+class Comment(models.Model):
+    comment = models.TextField(max_length=5000,null=True,blank=True)
+    commented_by = models.CharField(max_length=200,null=True,blank=True)
+    project = models.ForeignKey(Project,on_delete=models.CASCADE,null=True,blank=True)
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.comment
+    
