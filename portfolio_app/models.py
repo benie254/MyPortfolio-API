@@ -202,7 +202,7 @@ class Feature(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=500,default='')
     summary = models.TextField(max_length=1000,default='')
-    short_description = models.CharField(max_length=2000,default='')
+    short_description = models.TextField(max_length=2000,default='')
     long_description = models.TextField(max_length=10000,default='')
     featured_img = models.URLField(max_length=5000,default='')
     screenshot = models.URLField(max_length=5000,default='')
