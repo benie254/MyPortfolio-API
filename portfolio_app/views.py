@@ -60,7 +60,7 @@ class ProjectLikes(APIView):
         return Response(serializers.data)
 
 @permission_classes([AllowAny,])
-class ProjectFeedbacks(APIView):    
+class ProjectComments(APIView):    
     def get(self, request, id, format=None):
         comments = Comment.objects.all().filter(project=id)
         serializers = CommentSerializer(comments,many=True)
@@ -167,7 +167,35 @@ class AllComments(APIView):
     def post(self, request, format=None):
         serializers = CommentSerializer(data=request.data)
         if serializers.is_valid():
+            comment = serializers.validated_data['comment']
+            commented_by = serializers.validated_data['commented_by']
+            project = serializers.validated_data['project']
             serializers.save()
+            sg = sendgrid.SendGridAPIClient(api_key=config('SENDGRID_API_KEY'))
+            msg = render_to_string('email/comment-new.html', {
+                'comment': comment,
+                'commented_by': commented_by,
+                "project": project,
+            })
+            message = Mail(
+                from_email = Email("davinci.monalissa@gmail.com"),
+                to_emails = 'fullstack.benie@gmail.com',
+                subject = "New Contact",
+                html_content= msg
+            )
+            try:
+                sendgrid_client = sendgrid.SendGridAPIClient(config('SENDGRID_API_KEY'))
+                response = sendgrid_client.send(message)
+                print(response.status_code)
+                print(response.body)
+                print(response.headers)
+            except Exception as e:
+                print(e)
+            status_code = status.HTTP_201_CREATED
+            response = {
+                'success' : 'True',
+                'status code' : status_code,
+                }
             return Response(serializers.data)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST) 
 
