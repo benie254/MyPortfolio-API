@@ -43,7 +43,7 @@ class ProjectDetails(APIView):
         serializers = ProjectSerializer(project,many=False)
         return Response(serializers.data)
 
-@permission_classes([IsAuthenticated,])
+@permission_classes([IsAdminUser,])
 class AddProject(APIView):
     def post(self, request, format=None):
         serializers = ProjectSerializer(data=request.data)
@@ -66,7 +66,7 @@ class ProjectComments(APIView):
         serializers = CommentSerializer(comments,many=True)
         return Response(serializers.data)
 
-@permission_classes([IsAuthenticated,])
+@permission_classes([IsAdminUser,])
 class UpdateProject(APIView):
     def put(self, request, id, format=None):
         project = Project.objects.all().filter(pk=id).last()
@@ -105,7 +105,7 @@ class TechnologyDetails(APIView):
         serializers = TechnologySerializer(technology,many=False)
         return Response(serializers.data)
 
-@permission_classes([IsAuthenticated,])
+@permission_classes([IsAdminUser,])
 class UpdateTechnology(APIView):
     def put(self, request, id, format=None):
         technology = Technology.objects.all().filter(pk=id).last()
@@ -142,7 +142,7 @@ class FeatureDetails(APIView):
         serializers = FeatureSerializer(feature,many=False)
         return Response(serializers.data)
 
-@permission_classes([IsAuthenticated,])
+@permission_classes([IsAdminUser,])
 class UpdateFeature(APIView):
     def put(self, request, id, format=None):
         feature = Feature.objects.all().filter(pk=id).last()
@@ -207,7 +207,7 @@ class CommentDetails(APIView):
         serializers = CommentSerializer(comment,many=False)
         return Response(serializers.data)
 
-@permission_classes([IsAuthenticated,])
+@permission_classes([IsAdminUser,])
 class DeleteComment(APIView):
     def delete(self, request, id, format=None):
         comment = Comment.objects.all().filter(pk=id).last()
@@ -235,7 +235,7 @@ class LikeDetails(APIView):
         serializers = LikeSerializer(like,many=False)
         return Response(serializers.data)
 
-@permission_classes([IsAuthenticated,])
+@permission_classes([IsAdminUser,])
 class AllContacts(APIView):
     def get(self, request, format=None):
         contacts = Contact.objects.all()
@@ -297,7 +297,7 @@ class AddContact(APIView):
             return Response(serializers.data)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST) 
 
-@permission_classes([IsAuthenticated,])
+@permission_classes([IsAdminUser,])
 class ContactDetails(APIView):    
     def get(self, request, id, format=None):
         contact = Contact.objects.all().filter(pk=id).last()
