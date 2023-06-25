@@ -18,10 +18,10 @@
                 {% for t in technologies %}<li><a href="{% url 'technology-details' t.id %}">Technology: {{t.id}}. <span><strong>{{t.name}}</strong> </span> details</a></li>{% endfor %}
             </ul>
         </span>
-        <li><a href="{% url 'all-feedbacks' %}">All Feedbacks</a></li>
+        <li><a href="{% url 'all-comments' %}">All Comments</a></li>
         <span>
             <ul>
-                {% for f in feedbacks %}<li><a href="{% url 'feedback-details' f.id %}">Feedback #{{f.id}} details</a></li>{% endfor %}
+                {% for c in comments %}<li><a href="{% url 'comment-details' c.id %}">Comment #{{c.id}} details</a></li>{% endfor %}
             </ul>
         </span>
     </ol>
