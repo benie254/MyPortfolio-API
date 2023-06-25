@@ -193,6 +193,9 @@ class Password(models.Model):
     username = models.CharField(max_length=120,null=True,blank=True)
     email = models.EmailField(max_length=120,null=True,blank=True)
 
+class Technology(models.Model):
+    name = models.CharField(max_length=500,default='')
+
 class Project(models.Model):
     name = models.CharField(max_length=500,default='')
     summary = models.TextField(max_length=1000,default='')
