@@ -31,7 +31,7 @@ def home(request):
 @permission_classes([AllowAny,])
 class AllProjects(APIView):
     def get(self, request, format=None):
-        projects = Project.objects.all()
+        projects = Project.objects.all().order_by('-first_created')
         serializers = ProjectSerializer(projects,many=True)
         return Response(serializers.data)
     
