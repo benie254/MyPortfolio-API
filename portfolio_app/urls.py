@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^like/delete/(\d+)$',views.DeleteLike.as_view(),name="delete-like"),    
     url(r'^contacts/all$',views.AllContacts.as_view(),name="all-contacts"),
     url(r'^contact/details/(\d+)$',views.ContactDetails.as_view(),name="contact-details"),
+    url(r'^contact/delete/(\d+)$',views.DeleteContact.as_view(),name="delete-contact"),    
 ]

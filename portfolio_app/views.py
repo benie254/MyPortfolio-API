@@ -310,3 +310,10 @@ class ContactDetails(APIView):
         contact = Contact.objects.all().filter(pk=id).last()
         serializers = ContactSerializer(contact,many=False)
         return Response(serializers.data)
+
+@permission_classes([IsAdminUser,])
+class DeleteContact(APIView):
+    def delete(self, request, id, format=None):
+        contact = Contact.objects.all().filter(pk=id).last()
+        contact.delete()
+        return Response(status=status.HTTP_200_OK) 
