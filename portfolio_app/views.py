@@ -6,8 +6,8 @@ from rest_framework import status
 from rest_framework.decorators import permission_classes 
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 
-from portfolio_app.models import MyUser, Project, Technology, Comment, Like, Contact, Feature
-from portfolio_app.serializers import ProjectSerializer, TechnologySerializer, FeatureSerializer, CommentSerializer, LikeSerializer, ContactSerializer
+from portfolio_app.models import MyUser, Project, Comment, Like, Contact
+from portfolio_app.serializers import ProjectSerializer, CommentSerializer, LikeSerializer, ContactSerializer
 
 from django.shortcuts import render
 from django.template.loader import render_to_string
@@ -25,9 +25,8 @@ def landing(request):
 def home(request):
     title = 'home'
     projects = Project.objects.all()
-    technologies = Technology.objects.all()
     comments = Comment.objects.all()
-    return render(request,'index.html',{"title":title,"projects":projects,"technologies":technologies,"comments":comments,})
+    return render(request,'index.html',{"title":title,"projects":projects,"comments":comments,})
 
 @permission_classes([AllowAny,])
 class AllProjects(APIView):
@@ -79,82 +78,6 @@ class UpdateProject(APIView):
     def delete(self, request, id, format=None):
         project = Project.objects.all().filter(pk=id).last()
         project.delete()
-        return Response(status=status.HTTP_200_OK) 
-
-@permission_classes([AllowAny,])
-class AllTechnologies(APIView):
-    def get(self, request, format=None):
-        technologies = Technology.objects.all()
-        serializers = TechnologySerializer(technologies,many=True)
-        return Response(serializers.data)
-
-@permission_classes([AllowAny,])
-class AddTechnology(APIView):
-    def post(self, request, format=None):
-        serializers = TechnologySerializer(data=request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST) 
-
-
-@permission_classes([AllowAny,])
-class TechnologyDetails(APIView):    
-    def get(self, request, id, format=None):
-        technology = Technology.objects.all().filter(pk=id).last()
-        serializers = TechnologySerializer(technology,many=False)
-        return Response(serializers.data)
-
-@permission_classes([IsAdminUser,])
-class UpdateTechnology(APIView):
-    def put(self, request, id, format=None):
-        technology = Technology.objects.all().filter(pk=id).last()
-        serializers = TechnologySerializer(technology,request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST) 
-
-    def delete(self, request, id, format=None):
-        technology = Technology.objects.all().filter(pk=id).last()
-        technology.delete()
-        return Response(status=status.HTTP_200_OK) 
-
-@permission_classes([AllowAny,])
-class AllFeatures(APIView):
-    def get(self, request, format=None):
-        features = Feature.objects.all()
-        serializers = FeatureSerializer(features,many=True)
-        return Response(serializers.data)
-
-class AddFeature(APIView):
-    def post(self, request, format=None):
-        serializers = FeatureSerializer(data=request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST) 
-
-@permission_classes([AllowAny,])
-class FeatureDetails(APIView):    
-    def get(self, request, id, format=None):
-        feature = Feature.objects.all().filter(pk=id).last()
-        serializers = FeatureSerializer(feature,many=False)
-        return Response(serializers.data)
-
-@permission_classes([IsAdminUser,])
-class UpdateFeature(APIView):
-    def put(self, request, id, format=None):
-        feature = Feature.objects.all().filter(pk=id).last()
-        serializers = FeatureSerializer(feature,request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST) 
-
-    def delete(self, request, id, format=None):
-        feature = Feature.objects.all().filter(pk=id).last()
-        feature.delete()
         return Response(status=status.HTTP_200_OK) 
 
 @permission_classes([AllowAny,])

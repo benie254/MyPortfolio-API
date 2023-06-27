@@ -193,12 +193,6 @@ class Password(models.Model):
     username = models.CharField(max_length=120,null=True,blank=True)
     email = models.EmailField(max_length=120,null=True,blank=True)
 
-class Technology(models.Model):
-    name = models.CharField(max_length=500,default='')
-
-class Feature(models.Model):
-    name = models.CharField(max_length=120,default='')
-
 class Project(models.Model):
     name = models.CharField(max_length=500,default='')
     summary = models.TextField(max_length=1000,default='')
@@ -207,8 +201,16 @@ class Project(models.Model):
     featured_img = models.URLField(max_length=5000,default='')
     screenshot = models.URLField(max_length=5000,default='')
     live_link = models.URLField(max_length=1000,default='')
-    technologies = models.ManyToManyField(Technology)
-    features = models.ManyToManyField(Feature)
+    TECHS = (('Django, Angular, SQL, DRF, Railway, Firebase','Django, Angular, SQL, DRF, Railway, Firebase'),('Django, Angular, SQL, DRF, Vercel, Firebase','Django, Angular, SQL, DRF, Vercel, Firebase'))
+    technologies = models.CharField(choices=TECHS,max_length=1000,default='')
+    FEATS = (
+        ('Authentication, Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation','Authentication, Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation'),
+        ('Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation','Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation'),
+        ('Authentication, Email Service, Notifier, Error Handling, Form Validation','Authentication, Email Service, Notifier, Error Handling, Form Validation'),
+        ('Email Service, Notifier, Search Filter, Error Handling, Form Validation','Email Service, Notifier, Search Filter, Error Handling, Form Validation'),
+        ('Email Service, Notifier, Error Handling, Form Validation','Email Service, Notifier, Error Handling, Form Validation')
+        )
+    features = models.CharField(choices=FEATS,max_length=5000,default='')
 
     class Meta:
         ordering = ['name']
