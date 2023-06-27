@@ -197,12 +197,12 @@ class Project(models.Model):
     name = models.CharField(max_length=500,default='')
     first_created = models.DateField(default=timezone.now)
     summary = models.TextField(max_length=1000,default='')
-    short_description = models.TextField(max_length=2000,default='')
     long_description = models.TextField(max_length=10000,default='')
     featured_img = models.URLField(max_length=5000,default='')
     screenshot = models.URLField(max_length=5000,default='')
     live_link = models.URLField(max_length=1000,default='')
     git_link = models.URLField(max_length=1000,default='')
+    documentation = models.URLField(max_length=1000,default='')
     TECHS = (
         ('Django, Angular, SQL, DRF, Firebase, Railway','Django, Angular, SQL, DRF, Firebase, Railway'),
         ('Django, Angular, SQL, DRF, Firebase, Vercel','Django, Angular, SQL, DRF, Firebase, Vercel'))
