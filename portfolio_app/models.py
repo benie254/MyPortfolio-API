@@ -200,6 +200,7 @@ class Project(models.Model):
     long_description = models.TextField(max_length=10000,default='')
     featured_img = models.URLField(max_length=5000,default='')
     screenshot = models.URLField(max_length=5000,default='')
+    screenshot_2 = models.URLField(max_length=5000,default='')
     live_link = models.URLField(max_length=1000,default='')
     git_link = models.URLField(max_length=1000,default='')
     documentation = models.URLField(max_length=1000,default='')
