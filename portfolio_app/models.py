@@ -206,16 +206,27 @@ class Project(models.Model):
     documentation = models.URLField(max_length=1000,default='')
     TECHS = (
         ('Django, Angular, SQL, DRF, Firebase, Railway','Django, Angular, SQL, DRF, Firebase, Railway'),
-        ('Django, Angular, SQL, DRF, Firebase, Vercel','Django, Angular, SQL, DRF, Firebase, Vercel'))
+        ('Django, Angular, SQL, DRF, Firebase, Vercel','Django, Angular, SQL, DRF, Firebase, Vercel'),
+        ('Django, SQL, DRF, Railway','Django, SQL, DRF, Railway'),
+        ('Django, SQL, DRF, Vercel','Django, SQL, DRF, Vercel'),
+        )
     technologies = models.CharField(choices=TECHS,max_length=1000,default='')
     FEATS = (
         ('Authentication, Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation','Authentication, Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation'),
         ('Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation','Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation'),
+        ('Authentication, Email Service, SMS Service, Notifier, Error Handling, Form Validation','Authentication, Email Service, SMS Service, Notifier, Error Handling, Form Validation'),
         ('Authentication, Email Service, Notifier, Error Handling, Form Validation','Authentication, Email Service, Notifier, Error Handling, Form Validation'),
         ('Email Service, Notifier, Search Filter, Error Handling, Form Validation','Email Service, Notifier, Search Filter, Error Handling, Form Validation'),
-        ('Email Service, Notifier, Error Handling, Form Validation','Email Service, Notifier, Error Handling, Form Validation')
+        ('Email Service, Notifier, Error Handling, Form Validation','Email Service, Notifier, Error Handling, Form Validation'),
+        ('Custom Authentication, API, Email Service','Custom Authentication, API, Email Service'),
+        ('Custom Authentication, API, Email Service, SMS Service', 'Custom Authentication, API, Email Service, SMS Service'),
+        ('API, Email Service, SMS Service', 'API, Email Service, SMS Service'),
+        ('API, Email Service', 'API, Email Service'),
+        ('API', 'API'),
         )
     features = models.CharField(choices=FEATS,max_length=5000,default='')
+    FEATURE = (('featured','featured'),('not featured','not featured'))
+    featured = models.CharField(choices=FEATURE,max_length=500,default='')
 
     class Meta:
         ordering = ['name']
