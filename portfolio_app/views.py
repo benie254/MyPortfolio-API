@@ -234,6 +234,13 @@ class LikeDetails(APIView):
         like = Like.objects.all().filter(pk=id).last()
         serializers = LikeSerializer(like,many=False)
         return Response(serializers.data)
+    
+@permission_classes([IsAdminUser,])
+class DeleteLike(APIView):
+    def delete(self, request, id, format=None):
+        like = Like.objects.all().filter(pk=id).last()
+        like.delete()
+        return Response(status=status.HTTP_200_OK) 
 
 @permission_classes([IsAdminUser,])
 class AllContacts(APIView):

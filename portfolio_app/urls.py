@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^comment/details/(\d+)$',views.CommentDetails.as_view(),name="comment-details"),
     url(r'^likes/all$',views.AllLikes.as_view(),name="all-likes"),
     url(r'^like/details/(\d+)$',views.LikeDetails.as_view(),name="like-details"),
+    url(r'^contacts/add$',views.AddContact.as_view(),name="add-contacts"),
     # authenticated users
     url(r'^projects/add$',views.AddProject.as_view(),name="add-project"),
     url(r'^project/update/(\d+)$',views.UpdateProject.as_view(),name="update-project"),
@@ -24,7 +25,7 @@ urlpatterns = [
     url(r'^features/add$',views.AddFeature.as_view(),name="add-feature"),
     url(r'^feature/update/(\d+)$',views.UpdateFeature.as_view(),name="update-feature"),
     url(r'^comment/delete/(\d+)$',views.DeleteComment.as_view(),name="delete-comment"),
+    url(r'^like/delete/(\d+)$',views.DeleteLike.as_view(),name="delete-like"),    
     url(r'^contacts/all$',views.AllContacts.as_view(),name="all-contacts"),
-    url(r'^contacts/add$',views.AddContact.as_view(),name="add-contacts"),
     url(r'^contact/details/(\d+)$',views.ContactDetails.as_view(),name="contact-details"),
 ]
