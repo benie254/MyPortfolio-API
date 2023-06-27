@@ -201,6 +201,7 @@ class Project(models.Model):
     featured_img = models.URLField(max_length=5000,default='')
     screenshot = models.URLField(max_length=5000,default='')
     live_link = models.URLField(max_length=1000,default='')
+    git_link = models.URLField(max_length=1000,default='')
     TECHS = (
         ('Django, Angular, SQL, DRF, Firebase, Railway','Django, Angular, SQL, DRF, Firebase, Railway'),
         ('Django, Angular, SQL, DRF, Firebase, Vercel','Django, Angular, SQL, DRF, Firebase, Vercel'))
