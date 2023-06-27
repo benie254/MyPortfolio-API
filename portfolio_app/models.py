@@ -201,7 +201,9 @@ class Project(models.Model):
     featured_img = models.URLField(max_length=5000,default='')
     screenshot = models.URLField(max_length=5000,default='')
     live_link = models.URLField(max_length=1000,default='')
-    TECHS = (('Django, Angular, SQL, DRF, Railway, Firebase','Django, Angular, SQL, DRF, Railway, Firebase'),('Django, Angular, SQL, DRF, Vercel, Firebase','Django, Angular, SQL, DRF, Vercel, Firebase'))
+    TECHS = (
+        ('Django, Angular, SQL, DRF, Firebase, Railway','Django, Angular, SQL, DRF, Firebase, Railway'),
+        ('Django, Angular, SQL, DRF, Firebase, Vercel','Django, Angular, SQL, DRF, Firebase, Vercel'))
     technologies = models.CharField(choices=TECHS,max_length=1000,default='')
     FEATS = (
         ('Authentication, Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation','Authentication, Admin, Email Service, Notifier, Search Filter, Lazy Loading, Error Handling, Form Validation'),

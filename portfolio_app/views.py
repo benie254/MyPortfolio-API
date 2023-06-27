@@ -42,7 +42,7 @@ class ProjectDetails(APIView):
         serializers = ProjectSerializer(project,many=False)
         return Response(serializers.data)
 
-@permission_classes([IsAdminUser,])
+@permission_classes([IsAuthenticated,])
 class AddProject(APIView):
     def post(self, request, format=None):
         serializers = ProjectSerializer(data=request.data)
