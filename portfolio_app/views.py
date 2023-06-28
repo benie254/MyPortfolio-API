@@ -36,6 +36,20 @@ class AllProjects(APIView):
         return Response(serializers.data)
     
 @permission_classes([AllowAny,])
+class FeaturedProjects(APIView):
+    def get(self, request, format=None):
+        projects = Project.objects.all().filter(featured='featured').order_by('-first_created')
+        serializers = ProjectSerializer(projects,many=True)
+        return Response(serializers.data)
+    
+@permission_classes([AllowAny,])
+class PinnedProjects(APIView):
+    def get(self, request, format=None):
+        project = Project.objects.all().filter(pinned='pinned').last()
+        serializers = ProjectSerializer(project,many=False)
+        return Response(serializers.data)
+    
+@permission_classes([AllowAny,])
 class ProjectDetails(APIView):    
     def get(self, request, id, format=None):
         project = Project.objects.all().filter(pk=id).last()

@@ -5,6 +5,8 @@ urlpatterns = [
     # all users
     path('',views.home,name="home"),
     url(r'^projects/all$',views.AllProjects.as_view(),name="all-projects"),
+    url(r'^projects/featured$',views.FeaturedProjects.as_view(),name="featured-projects"),
+    url(r'^project/pinned$',views.PinnedProjects.as_view(),name="pinned-project"),
     url(r'^project/details/(\d+)$',views.ProjectDetails.as_view(),name="project-details"),
     url(r'^project/likes/(\d+)$',views.ProjectLikes.as_view(),name="project-likes"),
     url(r'^project/comments/(\d+)$',views.ProjectComments.as_view(),name="project-comments"),

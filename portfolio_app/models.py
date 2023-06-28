@@ -227,6 +227,8 @@ class Project(models.Model):
     features = models.CharField(choices=FEATS,max_length=5000,default='')
     FEATURE = (('featured','featured'),('not featured','not featured'))
     featured = models.CharField(choices=FEATURE,max_length=500,default='')
+    PINS = (('pinned','pinned'),('unpinned','unpinned'))
+    pinned = models.CharField(choices=PINS,max_length=500,null=True,blank=True)
 
     class Meta:
         ordering = ['name']
