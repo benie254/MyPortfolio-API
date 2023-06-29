@@ -13,11 +13,6 @@
             </ul>
         </span>
         <li><a href="{% url 'all-technologies' %}">All Technologies</a></li>
-        <span>
-            <ul>
-                {% for t in technologies %}<li><a href="{% url 'technology-details' t.id %}">Technology: {{t.id}}. <span><strong>{{t.name}}</strong> </span> details</a></li>{% endfor %}
-            </ul>
-        </span>
         <li><a href="{% url 'all-comments' %}">All Comments</a></li>
         <span>
             <ul>
