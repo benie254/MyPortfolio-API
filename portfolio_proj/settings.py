@@ -97,6 +97,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
     'http://127.0.0.1:8000',
     'https://benie254.web.app',
+    'https://myportfolio-api-production-b463.up.railway.app',
 )
 
 MIDDLEWARE = [
