@@ -1,5 +1,5 @@
 # MyPortfolio-API
-Back-end logic for my portfolio
+Back-end logic for a portfolio
 
 # MyPortfolio-API
 #### API development for a portfolio website, generated with [Django](https://www.djangoproject.com/) version 4.2.2
