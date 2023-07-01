@@ -13,11 +13,6 @@ This project contains development of the application's back-end. Key features in
 
 ## Technologies Used
 
-#### Packages
-* [Angular Material](https://material.angular.io/)- UI design & themes.
-* [NGX Pagination](https://www.npmjs.com/package/ngx-pagination/)- app pagination.
-* [NG Password Validator](https://www.npmjs.com/package/ng-password-validator/)- password validation.
-* [Notiflix](https://notiflix.github.io/)- loading & notifications.
 ### Back-end development
 * [Python](https://www.python.org/) ([Django](https://www.djangoproject.com/))- database, authentication, API, email service.
 * CSS & [Bootstrap](https://getbootstrap.com/)- API documentation styling.
