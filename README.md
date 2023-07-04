@@ -9,7 +9,10 @@ Back-end logic for a portfolio
 ## Description
 This project contains development of the application's back-end. Key features include database & API development, custom authentication, and integration with an email service. It handles all requests made from the application's [front-end](https://github.com/benie254/MyPortfolio).
 
-## Live Page: [Benie](https://myportfolio-api-production-b463.up.railway.app/)
+## Live Page: [Benie-API](https://myportfolio-api-production-b463.up.railway.app/)
+### Direct links
+[API](https://myportfolio-api-production-b463.up.railway.app/openapi/)
+[Docs](https://myportfolio-api-production-b463.up.railway.app/docs/)
 
 ## Technologies Used
 
