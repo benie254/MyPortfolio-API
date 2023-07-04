@@ -15,11 +15,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path as url
 from portfolio_app import views 
+from rest_framework_swagger.views import get_swagger_view
+from django.views.generic import TemplateView
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
+  
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Benie254 API",
+      default_version='v1',
+      description="Back-end logic for a portfolio website",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="fullstack.benie@gmail.com"),
+      license=openapi.License(name="MIT License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 urlpatterns = [
-    path('',views.landing,name="landing"),
+    path('',views.landing,name='landing'),
+    url(r'^openapi/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    url(r'^docs/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('api/',include('portfolio_app.urls')),
     path('api/user/',include('portfolio_app.urls_auth')),
     path('admin/', admin.site.urls),

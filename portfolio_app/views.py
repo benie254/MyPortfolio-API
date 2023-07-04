@@ -2,8 +2,8 @@ from django.http import Http404
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status 
-from rest_framework.decorators import permission_classes 
+from rest_framework import status, serializers
+from rest_framework.decorators import permission_classes, api_view, renderer_classes 
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 
 from portfolio_app.models import MyUser, Project, Comment, Like, Contact
@@ -17,7 +17,42 @@ from sendgrid.helpers.mail import *
 from decouple import config 
 
 
-# Create your views here.
+from drf_yasg.utils import swagger_auto_schema
+
+
+class ProjectForm(serializers.Serializer):
+    name = serializers.CharField()
+    first_created = serializers.DateField()
+    summary = serializers.CharField()
+    long_description = serializers.CharField()
+    featured_img = serializers.URLField()
+    screenshot = serializers.URLField()
+    screenshot_2 = serializers.URLField()
+    live_link = serializers.URLField()
+    git_link = serializers.URLField()
+    documentation = serializers.URLField()
+    technologies = serializers.CharField()
+    features = serializers.CharField()
+    featured = serializers.CharField()
+    pinned = serializers.CharField()
+
+class CommentForm(serializers.Serializer):
+    comment = serializers.CharField()
+    commented_by = serializers.CharField()
+    project = serializers.CharField()
+    date = serializers.DateField()
+
+class LikeForm(serializers.Serializer):
+    like = serializers.CharField()
+    project = serializers.CharField()
+    date = serializers.DateField()
+
+class ContactForm(serializers.Serializer):
+    name = serializers.CharField()
+    email = serializers.EmailField()
+    message = serializers.CharField()
+    date = serializers.DateField()
+
 def landing(request):
     title = 'welcome'
     return render(request,'landing.html',{"title":title,})
@@ -58,6 +93,7 @@ class ProjectDetails(APIView):
 
 @permission_classes([IsAuthenticated,])
 class AddProject(APIView):
+    @swagger_auto_schema(request_body=ProjectSerializer)
     def post(self, request, format=None):
         serializers = ProjectSerializer(data=request.data)
         if serializers.is_valid():
@@ -81,6 +117,7 @@ class ProjectComments(APIView):
 
 @permission_classes([IsAdminUser,])
 class UpdateProject(APIView):
+    @swagger_auto_schema(request_body=ProjectSerializer)
     def put(self, request, id, format=None):
         project = Project.objects.all().filter(pk=id).last()
         serializers = ProjectSerializer(project,request.data)
@@ -100,7 +137,8 @@ class AllComments(APIView):
         comments = Comment.objects.all()
         serializers = CommentSerializer(comments,many=True)
         return Response(serializers.data)
-
+    
+    @swagger_auto_schema(request_body=CommentSerializer)
     def post(self, request, format=None):
         serializers = CommentSerializer(data=request.data)
         if serializers.is_valid():
@@ -157,7 +195,8 @@ class AllLikes(APIView):
         likes = Like.objects.all()
         serializers = LikeSerializer(likes,many=True)
         return Response(serializers.data)
-
+    
+    @swagger_auto_schema(request_body=LikeSerializer)
     def post(self, request, format=None):
         serializers = LikeSerializer(data=request.data)
         if serializers.is_valid():
@@ -188,6 +227,7 @@ class AllContacts(APIView):
 
 @permission_classes([AllowAny,])
 class AddContact(APIView):
+    @swagger_auto_schema(request_body=ContactSerializer)
     def post(self, request, format=None):
         serializers = ContactSerializer(data=request.data)
         if serializers.is_valid():

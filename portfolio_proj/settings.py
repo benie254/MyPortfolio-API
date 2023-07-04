@@ -72,13 +72,16 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'knox',
     'corsheaders',
-    'bootstrap5'
+    'bootstrap5',
+    'rest_framework_swagger',
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
     'knox.auth.TokenAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 REST_KNOX = {
@@ -191,6 +194,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles','static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
 ]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # conf location for media 
