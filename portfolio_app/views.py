@@ -19,40 +19,6 @@ from decouple import config
 
 from drf_yasg.utils import swagger_auto_schema
 
-
-class ProjectForm(serializers.Serializer):
-    name = serializers.CharField()
-    first_created = serializers.DateField()
-    summary = serializers.CharField()
-    long_description = serializers.CharField()
-    featured_img = serializers.URLField()
-    screenshot = serializers.URLField()
-    screenshot_2 = serializers.URLField()
-    live_link = serializers.URLField()
-    git_link = serializers.URLField()
-    documentation = serializers.URLField()
-    technologies = serializers.CharField()
-    features = serializers.CharField()
-    featured = serializers.CharField()
-    pinned = serializers.CharField()
-
-class CommentForm(serializers.Serializer):
-    comment = serializers.CharField()
-    commented_by = serializers.CharField()
-    project = serializers.CharField()
-    date = serializers.DateField()
-
-class LikeForm(serializers.Serializer):
-    like = serializers.CharField()
-    project = serializers.CharField()
-    date = serializers.DateField()
-
-class ContactForm(serializers.Serializer):
-    name = serializers.CharField()
-    email = serializers.EmailField()
-    message = serializers.CharField()
-    date = serializers.DateField()
-
 def landing(request):
     title = 'welcome'
     return render(request,'landing.html',{"title":title,})

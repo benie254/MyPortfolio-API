@@ -26,7 +26,7 @@ This project contains development of the application's back-end. Key features in
 * [Django Rest Framework](https://www.django-rest-framework.org/) & [Knox](https://github.com/James1345/django-rest-knox)- token authentication.
 * [Sendgrid](http://sendgrid.com/)- email service API.
 ### Front-end development
-* [Click here for Back-end logic](https://github.com/benie254/MyPortfolio)
+* [Click here for Front-end logic](https://github.com/benie254/MyPortfolio)
 
 ## Known Bugs
 
