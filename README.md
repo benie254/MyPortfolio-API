@@ -38,7 +38,7 @@ You can reach me through [mail](mailto:davinci.monalissa@gmail.com) or [LinkedIn
 
 ## License
 
-Copyright (c) 2022 Benson Langat
+Copyright (c) 2023 **[Benson Langat](https://github.com/benie254)**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -58,6 +58,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*
 
-Copyright (c) 2022 **[Benson Langat](https://github.com/benie254)**
+Copyright (c) 2023 **[Benson Langat](https://github.com/benie254)**
 
 [Django](https://www.djangoproject.com/) version 4.2.2
